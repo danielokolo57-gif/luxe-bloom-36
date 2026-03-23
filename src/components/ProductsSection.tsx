@@ -80,10 +80,6 @@ export default function ProductsSection({ apiProducts, currency, onAddToCart }: 
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search products…"
             className="w-full pl-10 pr-10 py-3 text-sm bg-card border focus:outline-none focus:ring-1 transition-shadow"
-            style={{
-              borderColor: "hsl(var(--border))",
-              color: "hsl(var(--foreground))",
-            }}
             style={{ borderColor: "hsl(var(--border))", color: "hsl(var(--foreground))", boxShadow: "none" } as React.CSSProperties}
           />
           {search && (
