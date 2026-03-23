@@ -28,7 +28,6 @@ export default function ProductsSection({ apiProducts, currency, onAddToCart }: 
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
-  // Display logic
   const displayProducts = useMemo(() => {
     if (apiProducts.length >= 7) return apiProducts;
     return [...DEMO_PRODUCTS, ...apiProducts];
@@ -47,7 +46,7 @@ export default function ProductsSection({ apiProducts, currency, onAddToCart }: 
         (p) =>
           p.name.toLowerCase().includes(q) ||
           p.category?.toLowerCase().includes(q) ||
-          p.description?.toLowerCase().includes(q)
+          (p.description ?? "").toLowerCase().includes(q)
       );
     }
     return result;
@@ -67,7 +66,6 @@ export default function ProductsSection({ apiProducts, currency, onAddToCart }: 
 
       {/* Search + Filter */}
       <div className="flex flex-col md:flex-row gap-4 mb-10 items-center opacity-0-init animate-fade-up delay-200">
-        {/* Search bar */}
         <div className="relative flex-1 max-w-md w-full">
           <Search
             size={16}
@@ -79,8 +77,8 @@ export default function ProductsSection({ apiProducts, currency, onAddToCart }: 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search products…"
-            className="w-full pl-10 pr-10 py-3 text-sm bg-card border focus:outline-none focus:ring-1 transition-shadow"
-            style={{ borderColor: "hsl(var(--border))", color: "hsl(var(--foreground))", boxShadow: "none" } as React.CSSProperties}
+            className="w-full pl-10 pr-10 py-3 text-sm bg-card border focus:outline-none"
+            style={{ borderColor: "hsl(var(--border))", color: "hsl(var(--foreground))" }}
           />
           {search && (
             <button
@@ -93,7 +91,6 @@ export default function ProductsSection({ apiProducts, currency, onAddToCart }: 
           )}
         </div>
 
-        {/* Category pills */}
         <div className="flex gap-2 flex-wrap justify-center">
           {CATEGORIES.map((cat) => (
             <button
@@ -112,7 +109,6 @@ export default function ProductsSection({ apiProducts, currency, onAddToCart }: 
         </div>
       </div>
 
-      {/* Products grid */}
       {filtered.length === 0 ? (
         <div className="text-center py-20">
           <p className="font-serif text-2xl mb-2" style={{ color: "hsl(var(--charcoal))" }}>
