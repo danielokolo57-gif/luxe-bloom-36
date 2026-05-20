@@ -24,7 +24,7 @@ export interface CartItem extends Product {
 }
 
 export const API_URL =
-  "https://ctzluwfqilwgelexslco.supabase.co/functions/v1/products-api?project_id=website-11-3205";
+  "https://ctzluwfqilwgelexslco.supabase.co/functions/v1/products-api?project_id=skincare-by-oma-9246";
 
 export const DEFAULT_SETTINGS: StoreSettings = {
   website_name: "Lumière Beauty",
